@@ -34,6 +34,7 @@ namespace XPathTutor
             if (openFile.ShowDialog() == DialogResult.OK)
             {
                 filePath.Text = openFile.FileName;
+                loadXML.Focus();
             }
         }
 
@@ -137,7 +138,7 @@ namespace XPathTutor
                     }
                 }
             }
-            if(nodeList.Items.Count > 0)
+            if (nodeList.Items.Count > 0)
             {
                 nodeList.Show();
                 nodeButton.Show();
@@ -152,7 +153,7 @@ namespace XPathTutor
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(expressionText.Text))
+                if (string.IsNullOrWhiteSpace(expressionText.Text) || string.IsNullOrWhiteSpace(inputText.Text))
                 {
                     MessageBox.Show("Please enter an expression!");
                     return;
@@ -181,18 +182,6 @@ namespace XPathTutor
             }
         }
 
-        private void resetButton_Click(object sender, EventArgs e)
-        {
-            expressionText.Text = "";
-            nodeList.Items.Clear();
-            FindAllNodes(nav);
-            if (nodeList.Items.Count > 0)
-            {
-                nodeList.Show();
-                nodeButton.Show();
-            }
-        }
-
         private void nodeButton_Click(object sender, EventArgs e)
         {
             string selectedNode = nodeList.SelectedItem as string;
@@ -218,15 +207,8 @@ namespace XPathTutor
             {
                 filterList.Items.Add(function);
             }
-            if (filterList.Items.Count > 0)
-            {
-                filterList.Show();
-                filterButton.Show();
-            }
-            else
-            {
-                filterButton.Hide();
-            }
+            filterList.Show();
+            filterButton.Show();
         }
 
         private void filterButton_Click(object sender, EventArgs e)
@@ -276,6 +258,11 @@ namespace XPathTutor
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(expressionText.Text) || string.IsNullOrWhiteSpace(inputText.Text))
+                {
+                    MessageBox.Show("Please enter an expression!");
+                    return;
+                }
                 xmlDocument.LoadXml(inputText.Text);
                 inputText.Text = FormatXMLText(xmlDocument);
                 expressionText.Text = "";
@@ -291,6 +278,19 @@ namespace XPathTutor
             catch (Exception ex)
             {
                 MessageBox.Show("Error occurred. Original error: " + ex.Message);
+            }
+        }
+
+        private void expressionText_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (xmlDocument.HasChildNodes)
+            {
+                string exp = expressionText.Text;
+                if ((exp == "/") || (exp.StartsWith("/") && !exp.EndsWith("/") && !exp.EndsWith("[") && !exp.EndsWith("]") && !exp.EndsWith("@")))
+                {
+                    FindChildNodes();
+                    IncludeOtherFilters();
+                }
             }
         }
     }

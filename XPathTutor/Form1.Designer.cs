@@ -37,10 +37,9 @@
             this.expressionText = new System.Windows.Forms.TextBox();
             this.nodeList = new System.Windows.Forms.ComboBox();
             this.filterList = new System.Windows.Forms.ComboBox();
-            this.resetButton = new System.Windows.Forms.Button();
             this.executeButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.expLabel = new System.Windows.Forms.Label();
             this.hint = new System.Windows.Forms.Label();
             this.refreshButton = new System.Windows.Forms.Button();
             this.outputText = new System.Windows.Forms.TextBox();
@@ -106,6 +105,8 @@
             this.expressionText.Name = "expressionText";
             this.expressionText.Size = new System.Drawing.Size(450, 35);
             this.expressionText.TabIndex = 5;
+            this.expressionText.WordWrap = false;
+            this.expressionText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.expressionText_KeyUp);
             // 
             // nodeList
             // 
@@ -126,17 +127,6 @@
             this.filterList.Size = new System.Drawing.Size(200, 130);
             this.filterList.TabIndex = 7;
             this.filterList.Visible = false;
-            // 
-            // resetButton
-            // 
-            this.resetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resetButton.Location = new System.Drawing.Point(801, 634);
-            this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(110, 40);
-            this.resetButton.TabIndex = 9;
-            this.resetButton.Text = "Reset";
-            this.resetButton.UseVisualStyleBackColor = true;
-            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // executeButton
             // 
@@ -161,15 +151,15 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // label4
+            // expLabel
             // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(630, 500);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(450, 24);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "Expression Builder";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.expLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.expLabel.Location = new System.Drawing.Point(630, 500);
+            this.expLabel.Name = "expLabel";
+            this.expLabel.Size = new System.Drawing.Size(450, 24);
+            this.expLabel.TabIndex = 15;
+            this.expLabel.Text = "Expression Builder";
+            this.expLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // hint
             // 
@@ -234,11 +224,10 @@
             this.Controls.Add(this.nodeButton);
             this.Controls.Add(this.filterButton);
             this.Controls.Add(this.hint);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.expLabel);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.executeButton);
             this.Controls.Add(this.outputText);
-            this.Controls.Add(this.resetButton);
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.filterList);
             this.Controls.Add(this.nodeList);
@@ -271,10 +260,9 @@
         private System.Windows.Forms.TextBox expressionText;
         private System.Windows.Forms.ComboBox nodeList;
         private System.Windows.Forms.ComboBox filterList;
-        private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Button executeButton;
         private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label expLabel;
         private System.Windows.Forms.Label hint;
         private System.Windows.Forms.Button refreshButton;
         private System.Windows.Forms.TextBox outputText;
