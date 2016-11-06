@@ -42,7 +42,7 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.hint = new System.Windows.Forms.Label();
-            this.operButton = new System.Windows.Forms.Button();
+            this.refreshButton = new System.Windows.Forms.Button();
             this.outputText = new System.Windows.Forms.TextBox();
             this.filterButton = new System.Windows.Forms.Button();
             this.nodeButton = new System.Windows.Forms.Button();
@@ -179,15 +179,16 @@
             this.hint.TabIndex = 16;
             this.hint.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // operButton
+            // refreshButton
             // 
-            this.operButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.operButton.Location = new System.Drawing.Point(630, 634);
-            this.operButton.Name = "operButton";
-            this.operButton.Size = new System.Drawing.Size(110, 40);
-            this.operButton.TabIndex = 8;
-            this.operButton.Text = "Operator";
-            this.operButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshButton.Location = new System.Drawing.Point(630, 634);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(110, 40);
+            this.refreshButton.TabIndex = 8;
+            this.refreshButton.Text = "Refresh";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
             // outputText
             // 
@@ -238,7 +239,7 @@
             this.Controls.Add(this.executeButton);
             this.Controls.Add(this.outputText);
             this.Controls.Add(this.resetButton);
-            this.Controls.Add(this.operButton);
+            this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.filterList);
             this.Controls.Add(this.nodeList);
             this.Controls.Add(this.expressionText);
@@ -275,7 +276,7 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label hint;
-        private System.Windows.Forms.Button operButton;
+        private System.Windows.Forms.Button refreshButton;
         private System.Windows.Forms.TextBox outputText;
         private System.Windows.Forms.Button filterButton;
         private System.Windows.Forms.Button nodeButton;

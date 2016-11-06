@@ -27,7 +27,6 @@ namespace XPathTutor
 
         private void browse_Click(object sender, EventArgs e)
         {
-            openFile.InitialDirectory = "c:\\";
             openFile.FileName = "";
             openFile.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
             openFile.FilterIndex = 1;
@@ -138,6 +137,15 @@ namespace XPathTutor
                     }
                 }
             }
+            if(nodeList.Items.Count > 0)
+            {
+                nodeList.Show();
+                nodeButton.Show();
+            }
+            else
+            {
+                nodeButton.Hide();
+            }
         }
 
         private void executeButton_Click(object sender, EventArgs e)
@@ -210,6 +218,10 @@ namespace XPathTutor
                 filterList.Show();
                 filterButton.Show();
             }
+            else
+            {
+                filterButton.Hide();
+            }
         }
 
         private void filterButton_Click(object sender, EventArgs e)
@@ -243,6 +255,28 @@ namespace XPathTutor
                         }
                         myStream.Close();
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurred. Original error: " + ex.Message);
+            }
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                xmlDocument.LoadXml(inputText.Text);
+                inputText.Text = FormatXMLText(xmlDocument);
+                expressionText.Text = "";
+                nodeList.Items.Clear();
+                filterList.Items.Clear();
+                FindAllNodes(nav);
+                if (nodeList.Items.Count > 0)
+                {
+                    nodeList.Show();
+                    nodeButton.Show();
                 }
             }
             catch (Exception ex)
