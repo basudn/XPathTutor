@@ -186,6 +186,11 @@ namespace XPathTutor
             expressionText.Text = "";
             nodeList.Items.Clear();
             FindAllNodes(nav);
+            if (nodeList.Items.Count > 0)
+            {
+                nodeList.Show();
+                nodeButton.Show();
+            }
         }
 
         private void nodeButton_Click(object sender, EventArgs e)
