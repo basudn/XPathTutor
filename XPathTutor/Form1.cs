@@ -27,14 +27,14 @@ namespace XPathTutor
 
         private void browse_Click(object sender, EventArgs e)
         {
-            openFileDialog1.InitialDirectory = "c:\\";
-            openFileDialog1.FileName = "";
-            openFileDialog1.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
-            openFileDialog1.FilterIndex = 1;
-            openFileDialog1.RestoreDirectory = true;
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            openFile.InitialDirectory = "c:\\";
+            openFile.FileName = "";
+            openFile.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
+            openFile.FilterIndex = 1;
+            openFile.RestoreDirectory = true;
+            if (openFile.ShowDialog() == DialogResult.OK)
             {
-                filePath.Text = openFileDialog1.FileName;
+                filePath.Text = openFile.FileName;
             }
         }
 
@@ -201,7 +201,7 @@ namespace XPathTutor
 
         private void IncludeOtherFilters()
         {
-            foreach (string function in new string[]{ })
+            foreach (string function in new string[] { "first()", "last()", "[x]" })
             {
                 filterList.Items.Add(function);
             }
@@ -215,12 +215,40 @@ namespace XPathTutor
         private void filterButton_Click(object sender, EventArgs e)
         {
             string selectedNode = filterList.SelectedItem as string;
-            if (expressionText.Text.LastIndexOf("/")<expressionText.Text.LastIndexOf("["))
+            if (expressionText.Text.LastIndexOf("/") < expressionText.Text.LastIndexOf("["))
             {
                 MessageBox.Show("Please remove previous filter");
                 return;
             }
-            expressionText.Text += "[" + selectedNode + "]";    
+            expressionText.Text += "[" + selectedNode + "]";
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            Stream myStream;
+            try
+            {
+                SaveFileDialog saveFile = new SaveFileDialog();
+                saveFile.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                saveFile.FilterIndex = 1;
+                saveFile.RestoreDirectory = true;
+                if (saveFile.ShowDialog() == DialogResult.OK)
+                {
+                    if ((myStream = saveFile.OpenFile()) != null)
+                    {
+                        byte[] bArray = Encoding.UTF8.GetBytes(outputText.Text);
+                        foreach (byte b in bArray)
+                        {
+                            myStream.WriteByte(b);
+                        }
+                        myStream.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurred. Original error: " + ex.Message);
+            }
         }
     }
 }

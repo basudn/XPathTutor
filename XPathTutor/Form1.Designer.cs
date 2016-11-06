@@ -32,7 +32,7 @@
             this.filePath = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.loadXML = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openFile = new System.Windows.Forms.OpenFileDialog();
             this.inputText = new System.Windows.Forms.TextBox();
             this.expressionText = new System.Windows.Forms.TextBox();
             this.nodeList = new System.Windows.Forms.ComboBox();
@@ -87,10 +87,6 @@
             this.loadXML.Text = "Load";
             this.loadXML.UseVisualStyleBackColor = true;
             this.loadXML.Click += new System.EventHandler(this.loadXML_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // inputText
             // 
@@ -163,6 +159,7 @@
             this.saveButton.TabIndex = 14;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // label4
             // 
@@ -268,7 +265,7 @@
         private System.Windows.Forms.TextBox filePath;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button loadXML;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFile;
         private System.Windows.Forms.TextBox inputText;
         private System.Windows.Forms.TextBox expressionText;
         private System.Windows.Forms.ComboBox nodeList;
