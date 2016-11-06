@@ -209,7 +209,7 @@ namespace XPathTutor
 
         private void IncludeOtherFilters()
         {
-            foreach (string function in new string[] { "first()", "last()", "[x]" })
+            foreach (string function in new string[] { "text()", "last()", "x" })
             {
                 filterList.Items.Add(function);
             }
@@ -231,6 +231,10 @@ namespace XPathTutor
             {
                 MessageBox.Show("Please remove previous filter");
                 return;
+            }
+            if (selectedNode == "last()")
+            {
+                expressionText.Text = "(" + expressionText.Text + ")";
             }
             expressionText.Text += "[" + selectedNode + "]";
         }
