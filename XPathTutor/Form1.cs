@@ -184,21 +184,28 @@ namespace XPathTutor
 
         private void nodeButton_Click(object sender, EventArgs e)
         {
-            string selectedNode = nodeList.SelectedItem as string;
-            if (string.IsNullOrWhiteSpace(expressionText.Text) || !expressionText.Text.Contains("/"))
+            try
             {
-                expressionText.Text = "/";
+                string selectedNode = nodeList.SelectedItem as string;
+                if (string.IsNullOrWhiteSpace(expressionText.Text) || !expressionText.Text.Contains("/"))
+                {
+                    expressionText.Text = "/";
+                }
+                if (selectedNode == xmlDocument.DocumentElement.Name)
+                {
+                    expressionText.Text += selectedNode;
+                }
+                else
+                {
+                    expressionText.Text += "/" + selectedNode;
+                }
+                FindChildNodes();
+                IncludeOtherFilters();
             }
-            if (selectedNode == xmlDocument.DocumentElement.Name)
+            catch(Exception ex)
             {
-                expressionText.Text += selectedNode;
+                MessageBox.Show("Error occurred. Original error: " + ex.Message);
             }
-            else
-            {
-                expressionText.Text += "/" + selectedNode;
-            }
-            FindChildNodes();
-            IncludeOtherFilters();
         }
 
         private void IncludeOtherFilters()
@@ -258,9 +265,9 @@ namespace XPathTutor
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(expressionText.Text) || string.IsNullOrWhiteSpace(inputText.Text))
+                if (string.IsNullOrWhiteSpace(inputText.Text))
                 {
-                    MessageBox.Show("Please enter an expression!");
+                    MessageBox.Show("Please enter XML!");
                     return;
                 }
                 xmlDocument.LoadXml(inputText.Text);
@@ -283,14 +290,21 @@ namespace XPathTutor
 
         private void expressionText_KeyUp(object sender, KeyEventArgs e)
         {
-            if (xmlDocument.HasChildNodes)
+            try
             {
-                string exp = expressionText.Text;
-                if ((exp == "/") || (exp.StartsWith("/") && !exp.EndsWith("/") && !exp.EndsWith("[") && !exp.EndsWith("]") && !exp.EndsWith("@")))
+                if (xmlDocument.HasChildNodes)
                 {
-                    FindChildNodes();
-                    IncludeOtherFilters();
+                    string exp = expressionText.Text;
+                    if ((exp == "/") || (exp.StartsWith("/") && !exp.EndsWith("/") && !exp.EndsWith("[") && !exp.EndsWith("]") && !exp.EndsWith("@") && !exp.EndsWith("(")))
+                    {
+                        FindChildNodes();
+                        IncludeOtherFilters();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
     }
