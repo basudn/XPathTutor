@@ -151,4 +151,13 @@
   <data name="tut9" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\tut9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="tutor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tutor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="white_wallpaper_18" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\white-wallpaper-18.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="xpath" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\xpath.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

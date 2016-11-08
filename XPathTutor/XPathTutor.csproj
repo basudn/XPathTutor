@@ -90,7 +90,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\tutor.png" />
+    <None Include="Resources\xpath.png" />
+    <None Include="Resources\browse_down.png" />
+    <None Include="Resources\browse_up.png" />
     <Content Include="Resources\error_sound.wav" />
+    <None Include="Resources\filter_up.png" />
+    <None Include="Resources\load_down.png" />
+    <None Include="Resources\load_up.png" />
+    <None Include="Resources\node_down.png" />
+    <None Include="Resources\node_up.png" />
+    <None Include="Resources\refresh_down.png" />
+    <None Include="Resources\refresh_up.png" />
+    <None Include="Resources\save_down.png" />
+    <None Include="Resources\save_up.png" />
+    <None Include="Resources\execute_down.png" />
+    <None Include="Resources\execute_up.png" />
+    <None Include="Resources\filter_down.png" />
     <Content Include="Resources\tut1.png" />
     <Content Include="Resources\tut10.png" />
     <Content Include="Resources\tut2.png" />
@@ -101,6 +117,7 @@
     <Content Include="Resources\tut7.png" />
     <Content Include="Resources\tut8.png" />
     <Content Include="Resources\tut9.png" />
+    <None Include="Resources\white-wallpaper-18.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

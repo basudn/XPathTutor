@@ -338,5 +338,17 @@ namespace XPathTutor
             Tutorial tutorial = new Tutorial();
             tutorial.Show();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //browse.BackgroundImage = XPathTutor.Properties.Resources.browse_up;
+            //browse.Text = "";
+            
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
