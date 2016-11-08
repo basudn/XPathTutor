@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +20,7 @@ namespace XPathTutor
         XmlDocument xmlDocument = new XmlDocument();
         XPathNavigator nav;
         XPathNodeIterator NodeIter;
+        SoundPlayer error = new SoundPlayer(XPathTutor.Properties.Resources.error_sound);
 
         public Form1()
         {
@@ -65,6 +67,7 @@ namespace XPathTutor
             }
             catch (Exception ex)
             {
+                error.Play();
                 MessageBox.Show("Error occurred. Original error: " + ex.Message);
             }
         }
@@ -156,11 +159,13 @@ namespace XPathTutor
             {
                 if (string.IsNullOrWhiteSpace(expressionText.Text))
                 {
+                    error.Play();
                     MessageBox.Show("Please enter an expression!");
                     return;
                 }
                 else if (string.IsNullOrWhiteSpace(inputText.Text))
                 {
+                    error.Play();
                     MessageBox.Show("Please enter XML!");
                     return;
                 }
@@ -185,6 +190,7 @@ namespace XPathTutor
             }
             catch (Exception ex)
             {
+                error.Play();
                 MessageBox.Show("Error occurred. Original error: " + ex.Message);
             }
         }
@@ -211,6 +217,7 @@ namespace XPathTutor
             }
             catch(Exception ex)
             {
+                error.Play();
                 MessageBox.Show("Error occurred. Original error: " + ex.Message);
             }
         }
@@ -230,6 +237,7 @@ namespace XPathTutor
             string selectedNode = filterList.SelectedItem as string;
             if (expressionText.Text.LastIndexOf("/") < expressionText.Text.LastIndexOf("["))
             {
+                error.Play();
                 MessageBox.Show("Please remove previous filter");
                 return;
             }
@@ -264,6 +272,7 @@ namespace XPathTutor
             }
             catch (Exception ex)
             {
+                error.Play();
                 MessageBox.Show("Error occurred. Original error: " + ex.Message);
             }
         }
@@ -274,6 +283,7 @@ namespace XPathTutor
             {
                 if (string.IsNullOrWhiteSpace(inputText.Text))
                 {
+                    error.Play();
                     MessageBox.Show("Please enter XML!");
                     return;
                 }
@@ -293,6 +303,7 @@ namespace XPathTutor
             }
             catch (Exception ex)
             {
+                error.Play();
                 MessageBox.Show("Error occurred. Original error: " + ex.Message);
             }
         }
