@@ -321,5 +321,11 @@ namespace XPathTutor
         {
             refreshButton_Click(sender, e);
         }
+
+        private void tutorialButton_Click(object sender, EventArgs e)
+        {
+            Tutorial tutorial = new Tutorial();
+            tutorial.Show();
+        }
     }
 }
