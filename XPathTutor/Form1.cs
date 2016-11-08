@@ -59,6 +59,7 @@ namespace XPathTutor
                             nodeButton.Show();
                         }
                         inputText.Text = FormatXMLText(xmlDocument);
+                        parseButton.Hide();
                     }
                 }
             }
@@ -153,13 +154,19 @@ namespace XPathTutor
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(expressionText.Text) || string.IsNullOrWhiteSpace(inputText.Text))
+                if (string.IsNullOrWhiteSpace(expressionText.Text))
                 {
                     MessageBox.Show("Please enter an expression!");
                     return;
                 }
+                else if (string.IsNullOrWhiteSpace(inputText.Text))
+                {
+                    MessageBox.Show("Please enter XML!");
+                    return;
+                }
                 outputText.Text = "";
                 xmlDocument.LoadXml(inputText.Text);
+                nav = xmlDocument.CreateNavigator();
                 inputText.Text = FormatXMLText(xmlDocument);
                 NodeIter = nav.Select(expressionText.Text);
                 while (NodeIter.MoveNext())
@@ -271,6 +278,7 @@ namespace XPathTutor
                     return;
                 }
                 xmlDocument.LoadXml(inputText.Text);
+                nav = xmlDocument.CreateNavigator();
                 inputText.Text = FormatXMLText(xmlDocument);
                 expressionText.Text = "";
                 nodeList.Items.Clear();
@@ -281,6 +289,7 @@ namespace XPathTutor
                     nodeList.Show();
                     nodeButton.Show();
                 }
+                parseButton.Hide();
             }
             catch (Exception ex)
             {
@@ -306,6 +315,11 @@ namespace XPathTutor
             {
 
             }
+        }
+
+        private void parseButton_Click(object sender, EventArgs e)
+        {
+            refreshButton_Click(sender, e);
         }
     }
 }

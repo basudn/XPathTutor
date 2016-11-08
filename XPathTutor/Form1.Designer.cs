@@ -45,6 +45,7 @@
             this.outputText = new System.Windows.Forms.TextBox();
             this.filterButton = new System.Windows.Forms.Button();
             this.nodeButton = new System.Windows.Forms.Button();
+            this.parseButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // browse
@@ -215,12 +216,24 @@
             this.nodeButton.Visible = false;
             this.nodeButton.Click += new System.EventHandler(this.nodeButton_Click);
             // 
+            // parseButton
+            // 
+            this.parseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.parseButton.Location = new System.Drawing.Point(265, 500);
+            this.parseButton.Name = "parseButton";
+            this.parseButton.Size = new System.Drawing.Size(110, 40);
+            this.parseButton.TabIndex = 19;
+            this.parseButton.Text = "Parse";
+            this.parseButton.UseVisualStyleBackColor = true;
+            this.parseButton.Click += new System.EventHandler(this.parseButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1178, 844);
+            this.Controls.Add(this.parseButton);
             this.Controls.Add(this.nodeButton);
             this.Controls.Add(this.filterButton);
             this.Controls.Add(this.hint);
@@ -268,6 +281,7 @@
         private System.Windows.Forms.TextBox outputText;
         private System.Windows.Forms.Button filterButton;
         private System.Windows.Forms.Button nodeButton;
+        private System.Windows.Forms.Button parseButton;
     }
 }
 
